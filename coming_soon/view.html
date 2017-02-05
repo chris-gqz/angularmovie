@@ -1,0 +1,35 @@
+<h1 class="page-header">正在热映</h1>
+<h2 ng-if='message'>{{message}}</h2>
+<div class="list-group">
+  <a href="#" ng-repeat="item in subjects.subjects" class="list-group-item ">
+  <span class="badge">{{item.rating.average}}</span>
+<div class="media">
+  <div class="media-left">
+      <img class="media-object"
+      ng-src="{{item.images.small}}" alt="item.title">
+  </div>
+  <div class="media-body">
+ <h3 class="media-heading">{{item.title}}</h3>
+    <p>导演：
+<span ng-repeat="d in item.directors">
+    <!-- 这都行 -->
+    <!-- {{d.name + ($last? '':'、')}} -->
+    {{d.name}}{{$last? '':'、'}}
+    <!-- <span ng-if='!$last'>、</span> -->
+</span>
+</p>
+    <p>类型：<span>
+        {{item.genres.join('、')}}
+    </span></p>
+  </div>
+</div>
+  </a>
+</div>
+<p>一共有{{subjects.total}}条记录,{{totalPages}}页</p>
+
+<div class="mask" ng-show='loading'>
+<div class="spinner">
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+</div>
+</div>
