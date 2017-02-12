@@ -1,6 +1,5 @@
 (function(angular) {
   'use strict';
-
   // 创建正在热映模块
   var module = angular.module(
     'moviecat.movie_detail', [
@@ -9,15 +8,12 @@
     ]);
   // 配置模块的路由
   module.config(['$routeProvider', function($routeProvider) {
-
     console.log('dddd');
-
     $routeProvider.when('/detail/:id', {
       templateUrl: 'movie_detail/view.html',
       controller: 'MovieDetailController'
     });
   }]);
-
   module.controller('MovieDetailController', [
     '$scope',
     '$route',
@@ -28,13 +24,7 @@
       $scope.movie = {};
       $scope.loading = true;
       var id = $routeParams.id;
-
-      // var apiAddress =
-      //   AppConfig.detailApiAddress + id;
-
-
 var apiAddress = AppConfig.detailApiAddress+id;
-
       // 跨域的方式
       HttpService.jsonp(apiAddress, {}, function(data) {
         $scope.movie = data;
